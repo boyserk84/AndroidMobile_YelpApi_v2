@@ -13,7 +13,7 @@ import android.view.MenuItem;
 /**
  * HomeActivity
  * (Demonstration)
- * Example of Android Mobile App using Simple Yelp Api.
+ * Example of Android Mobile App using Simple Yelp API.
  * @author nkemavaha
  *
  */
@@ -23,7 +23,6 @@ public class HomeActivity extends Activity implements IRequestListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-		Log.d("DEBUG", "onCreate");
 		SimpleYelpClient.getRestClient().search("restaurant", 37.77493,-122.419415, this);
 	}
 
@@ -49,16 +48,12 @@ public class HomeActivity extends Activity implements IRequestListener{
 
 	@Override
 	public void onSuccess(JSONObject successResult) {
-		// TODO Auto-generated method stub
 		Log.d("DEBUG", "Total result" + YelpResponse.fromJSON( successResult ).getTotal() );
-		
-		
 	}
 
 	@Override
 	public void onFailure(JSONObject failureResult) {
-		// TODO Auto-generated method stub
-		
+		Log.d("DEBUG", "Failure" + failureResult.toString() );
 	}
 
 }

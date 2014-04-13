@@ -58,4 +58,6 @@ local.properties
 .buildpathbin/*
 
 # Ignore Token Configuration
+#
+# http://blog.pagebakers.nl/2009/01/29/git-ignoring-changes-in-tracked-files/
 src/natemobiles/app/simpleyelpapiforandroid/configs/SimpleYelpClientConfig.java
