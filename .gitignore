@@ -56,3 +56,6 @@ local.properties
 
 # PDT-specific
 .buildpathbin/*
+
+# Ignore Token Configuration
+src/natemobiles/app/simpleyelpapiforandroid/configs/SimpleYelpClientConfig.java
