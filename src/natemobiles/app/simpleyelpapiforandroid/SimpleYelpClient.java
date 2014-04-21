@@ -155,6 +155,9 @@ public class SimpleYelpClient extends AsyncTask<String, Void, String> {
 		request.addQuerystringParameter("term", searchTerm);
 		request.addQuerystringParameter("ll", latitude + "," + longitude);
 		request.addQuerystringParameter("sort", "1");	// sort by distance
+		request.addQuerystringParameter("radius_filter", "1609.34");
+		request.addQuerystringParameter("limit", "20"); // TODO: causes query to hang -- figure out why
+		request.addQuerystringParameter("category_filter", "french" ); // TODO: causes app to crash -- figure out why
 		
 		// Sign a request with access token.
 		this.service.signRequest( accessToken, request);

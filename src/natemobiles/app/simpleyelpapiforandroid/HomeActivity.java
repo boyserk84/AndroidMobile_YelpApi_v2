@@ -1,14 +1,21 @@
 package natemobiles.app.simpleyelpapiforandroid;
 
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import natemobiles.app.simpleyelpapiforandroid.adapters.YelpBusinessAdapter;
 import natemobiles.app.simpleyelpapiforandroid.interfaces.IRequestListener;
+import natemobiles.app.simpleyelpapiforandroid.models.YelpBusiness;
 import natemobiles.app.simpleyelpapiforandroid.models.YelpResponse;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 /**
  * HomeActivity
@@ -19,10 +26,22 @@ import android.view.MenuItem;
  */
 public class HomeActivity extends Activity implements IRequestListener{
 
+	private YelpBusinessAdapter resultAdapter;
+	
+	private ArrayList<YelpBusiness> results;
+	
+	private ListView resultView;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
+		
+		resultView = (ListView) findViewById( R.id.lvResult );
+		results = new ArrayList<YelpBusiness>();
+		resultAdapter = new YelpBusinessAdapter( getBaseContext(), results);
+		resultView.setAdapter( resultAdapter );
+		
 		SimpleYelpClient.getRestClient().search("restaurant", 37.77493,-122.419415, this);
 	}
 
@@ -49,6 +68,17 @@ public class HomeActivity extends Activity implements IRequestListener{
 	@Override
 	public void onSuccess(JSONObject successResult) {
 		Log.d("DEBUG", "Total result" + YelpResponse.fromJSON( successResult ).getTotal() );
+
+		try {
+			JSONArray businesses = successResult.getJSONArray("businesses");
+			results = YelpBusiness.fromJSONArray( businesses );
+			resultAdapter.addAll( results );
+			resultAdapter.notifyDataSetInvalidated();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	@Override

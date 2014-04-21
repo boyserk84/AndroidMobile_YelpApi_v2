@@ -4,5 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="natemobiles.app.simpleyelpapiforandroid.HomeActivity"
-    tools:ignore="MergeRootFrame" />
+    tools:ignore="MergeRootFrame" >
+
+    <ListView
+        android:id="@+id/lvResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+    </ListView>
+
+</RelativeLayout>
 
