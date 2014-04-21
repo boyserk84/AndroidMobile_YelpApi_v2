@@ -1,5 +1,8 @@
 # Simple Yelp API Client for Android
 
+## Sample Android App Screenshot
+![Alt text](Android_apps_simpleYelpApi.PNG "Main App Screenshot")
+
 ## Overview
 Simple Yelp API Client for Android:
 It is a skeleton Android project that makes writing Android apps that utilizes Yelp API version 2 as easy as possible. 
@@ -15,4 +18,7 @@ The following things are supported out of the box:
 
 The following libraries are used to make this possible:
  * [scribe-java](https://github.com/fernandezpablo85/scribe-java) - Simple OAuth library for handling the authentication flow.
+ * SmartImageView - Using for loading image from URL.
  
+ 
+ Feedback, issues, or concern, please feel free to contact me.
