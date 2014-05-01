@@ -12,13 +12,21 @@ This skeleton project combines the libraries and structure to enable quick devel
 I created this project as a result of lack of detailed information regarding how to integrate Restful Yelp API to an Android app.
 Most things I found on internet are quite dated or not simple enough IMO. Therefore, I hope this will help whoever that will need this for iterate their own apps quickly.
 
+Hopefully, this would help you getting things up running quickly with a sample Android App.
+
 The following things are supported out of the box:
  * Authenticating with any OAuth 1.0a for Yelp API version 2
- * Sending a Yelp search requests for and parsing JSON API data using a defined client
+ * Sending a Yelp search requests for AND parsing a raw response JSON data from Yelp API called into a strongly-typed data object.
+ * Customizable filter request to Yelp API.
 
 The following libraries are used to make this possible:
  * [scribe-java](https://github.com/fernandezpablo85/scribe-java) - Simple OAuth library for handling the authentication flow.
- * SmartImageView - Using for loading image from URL.
+ * [Picasso](https://github.com/square/picasso) - A powerful image downloading and caching library for Android
  
- 
- Feedback, issues, or concern, please feel free to contact me.
+Author(s)/Contributor(s)
+* [Nate Kemavaha](https://github.com/boyserk84/)
+
+
+Feedback, issue, concern or suggestion?
+Please email me at [nkemavaha@gmail.com](mailto:nkemavaha@gmail.com).
+
