@@ -11,12 +11,13 @@ This skeleton project combines the libraries and structure to enable quick devel
 I created this project as a result of lack of detailed information regarding how to integrate Restful Yelp API to an Android app.
 Most things I found on internet are quite dated or not simple enough IMO. Therefore, I hope this will help whoever that will need this for iterating their own apps quickly.
 
+Fyi, this is implemented in Java.
 
 ## The following things are supported out of the box:
  * Authenticating with any OAuth 1.0a for Yelp API version 2
  * Sending a Yelp search requests for AND parsing a raw response JSON data from a Yelp API call into a strongly-typed data object.
  * Customizable filter request to Yelp API.
-
+ * Yelp Client is running on a separate thread. Therefore, it will not interfere or thrown error on Android UI thread.
 
 ## The following libraries are used to make this possible:
  * [scribe-java](https://github.com/fernandezpablo85/scribe-java) - Simple OAuth library for handling the authentication flow.
