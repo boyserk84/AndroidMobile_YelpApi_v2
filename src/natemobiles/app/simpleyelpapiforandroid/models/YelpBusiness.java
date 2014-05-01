@@ -23,9 +23,9 @@ public class YelpBusiness {
 	
 	private String mobileUrl;
 	
-	private float distance;
+	private double distance;
 	
-	private float rating;
+	private double rating;
 	
 	private String snippetText;
 	
@@ -38,11 +38,11 @@ public class YelpBusiness {
 		return mobileUrl;
 	}
 
-	public float getDistance() {
+	public double getDistance() {
 		return distance;
 	}
 
-	public float getRating() {
+	public double getRating() {
 		return rating;
 	}
 
@@ -80,12 +80,12 @@ public class YelpBusiness {
 		try {
 			business.name = object.getString("name");
 			business.id = object.getString("id");
-			business.rating = (float) object.getDouble("rating");
+			business.rating = object.getDouble("rating");
 			business.imageUrl = object.getString("image_url");
 			business.mobileUrl = object.getString("mobile_url");
 			business.snippetText = object.getString("snippet_text");
 			business.snippetImageUrl = object.getString("snippet_image_url");
-			business.distance = (float) object.getDouble("distance");
+			business.distance = object.getDouble("distance");
 			business.ratingImgUrl = object.getString("rating_img_url");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
