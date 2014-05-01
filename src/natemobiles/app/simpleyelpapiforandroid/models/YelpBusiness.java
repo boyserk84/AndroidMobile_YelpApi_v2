@@ -6,6 +6,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * YelpBusiness
+ * 
+ * Strongly-type object for Yelp Business data.
+ * @author nkemavaha
+ *
+ */
 public class YelpBusiness {
 
 	private String id;
@@ -23,30 +30,20 @@ public class YelpBusiness {
 	private String snippetText;
 	
 	private String snippetImageUrl;
+	
+	private String ratingImgUrl;
 
 	
 	public String getMobileUrl() {
 		return mobileUrl;
 	}
 
-	public void setMobileUrl(String mobileUrl) {
-		this.mobileUrl = mobileUrl;
-	}
-
 	public float getDistance() {
 		return distance;
 	}
 
-	public void setDistance(float distance) {
-		this.distance = distance;
-	}
-
 	public float getRating() {
 		return rating;
-	}
-
-	public void setRating(float rating) {
-		this.rating = rating;
 	}
 
 	public String getId() {
@@ -69,6 +66,15 @@ public class YelpBusiness {
 		return snippetImageUrl;
 	}
 	
+	public String getRatingImageUrl() {
+		return ratingImgUrl;
+	}
+	
+	/**
+	 * Convert raw JSON object to YelpBusiness Object
+	 * @param object
+	 * @return
+	 */
 	public static YelpBusiness fromJSON(JSONObject object) {
 		YelpBusiness business = new YelpBusiness();
 		try {
@@ -80,6 +86,7 @@ public class YelpBusiness {
 			business.snippetText = object.getString("snippet_text");
 			business.snippetImageUrl = object.getString("snippet_image_url");
 			business.distance = (float) object.getDouble("distance");
+			business.ratingImgUrl = object.getString("rating_img_url");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -89,6 +96,11 @@ public class YelpBusiness {
 		return business;
 	}
 	
+	/**
+	 * Convert a raw JSON array to array list of Yelp Business
+	 * @param array
+	 * @return
+	 */
 	public static ArrayList<YelpBusiness> fromJSONArray(JSONArray array) {
 		ArrayList<YelpBusiness> businesses = new ArrayList<YelpBusiness>();
 		

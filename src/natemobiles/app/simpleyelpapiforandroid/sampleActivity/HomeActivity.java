@@ -1,21 +1,24 @@
-package natemobiles.app.simpleyelpapiforandroid;
+package natemobiles.app.simpleyelpapiforandroid.sampleActivity;
 
 import java.util.ArrayList;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import natemobiles.app.simpleyelpapiforandroid.R;
+import natemobiles.app.simpleyelpapiforandroid.SimpleYelpClient;
 import natemobiles.app.simpleyelpapiforandroid.adapters.YelpBusinessAdapter;
 import natemobiles.app.simpleyelpapiforandroid.interfaces.IRequestListener;
 import natemobiles.app.simpleyelpapiforandroid.models.YelpBusiness;
+import natemobiles.app.simpleyelpapiforandroid.models.YelpFilterRequest;
 import natemobiles.app.simpleyelpapiforandroid.models.YelpResponse;
+
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 /**
  * HomeActivity
@@ -42,7 +45,22 @@ public class HomeActivity extends Activity implements IRequestListener{
 		resultAdapter = new YelpBusinessAdapter( getBaseContext(), results);
 		resultView.setAdapter( resultAdapter );
 		
-		SimpleYelpClient.getRestClient().search("restaurant", 37.77493,-122.419415, this);
+		/////////////////////////////////////
+		// How to call SimpleYelpClient
+		////////////////////////////////////
+		
+		// (1) Simplest way to request data from Yelp
+		//SimpleYelpClient.getRestClient().search("restaurant", 37.77493,-122.419415, this);
+		
+		// or
+		// (2) Customized request data from Yelp
+		YelpFilterRequest requestData = new YelpFilterRequest();
+		requestData.longitude = -122.419415;
+		requestData.latitude = 37.77493;
+		requestData.term = "restaurant";
+		requestData.categoryFilter = "thai";
+		requestData.sortType = YelpFilterRequest.SORT_BY_DISTANCE;
+		SimpleYelpClient.getRestClient().search( requestData, this );
 	}
 
 	@Override
@@ -67,23 +85,17 @@ public class HomeActivity extends Activity implements IRequestListener{
 
 	@Override
 	public void onSuccess(JSONObject successResult) {
-		Log.d("DEBUG", "Total result" + YelpResponse.fromJSON( successResult ).getTotal() );
-
-		try {
-			JSONArray businesses = successResult.getJSONArray("businesses");
-			results = YelpBusiness.fromJSONArray( businesses );
-			resultAdapter.addAll( results );
-			resultAdapter.notifyDataSetInvalidated();
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		YelpResponse response = YelpResponse.fromJSON( successResult );
+		results = response.getBusinesses();
+		Log.d("DEBUG", results.size() + "");
+		resultAdapter.addAll( results );
+		resultAdapter.notifyDataSetInvalidated();
 	}
 
 	@Override
 	public void onFailure(JSONObject failureResult) {
-		Log.d("DEBUG", "Failure" + failureResult.toString() );
+		Log.d("DEBUG", failureResult.toString());
+		Toast.makeText( getBaseContext(), "Failure: " + failureResult.toString(), Toast.LENGTH_SHORT).show();
 	}
 
 }

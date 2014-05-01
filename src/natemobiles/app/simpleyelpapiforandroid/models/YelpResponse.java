@@ -50,6 +50,11 @@ public class YelpResponse {
 		return businesses;
 	}
 	
+	/**
+	 * Convert RAW JSON object to Yelp Response data
+	 * @param object
+	 * @return
+	 */
 	public static YelpResponse fromJSON( JSONObject object ){
 		YelpResponse response = new YelpResponse();
 		
@@ -67,8 +72,5 @@ public class YelpResponse {
 		
 		return response;
 	}
-
-
-	
 	
 }
