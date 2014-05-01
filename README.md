@@ -1,6 +1,5 @@
 # Simple Yelp API Client for Android
 
-## Sample Android App Screenshot
 ![Alt text](Android_apps_simpleYelpApi.PNG "Main App Screenshot")
 
 ## Overview
@@ -15,20 +14,21 @@ Most things I found on internet are quite dated or not simple enough IMO. Theref
 Hopefully, this would help you getting things up running quickly with a sample Android App.
 
 
-# The following things are supported out of the box:
+## The following things are supported out of the box:
  * Authenticating with any OAuth 1.0a for Yelp API version 2
  * Sending a Yelp search requests for AND parsing a raw response JSON data from Yelp API called into a strongly-typed data object.
  * Customizable filter request to Yelp API.
 
 
-# The following libraries are used to make this possible:
+## The following libraries are used to make this possible:
  * [scribe-java](https://github.com/fernandezpablo85/scribe-java) - Simple OAuth library for handling the authentication flow.
  * [Picasso](https://github.com/square/picasso) - A powerful image downloading and caching library for Android
  
-# Author(s)/Contributor(s)
+
+## Author(s)/Contributor(s)
 * [Nate Kemavaha](https://github.com/boyserk84/)
 
 
-# Feedback, issue, concern or suggestion?
+## Feedback, issue, concern or suggestion?
 Please email me at [nkemavaha@gmail.com](mailto:nkemavaha@gmail.com).
 
