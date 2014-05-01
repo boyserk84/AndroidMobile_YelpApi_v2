@@ -9,14 +9,12 @@ This skeleton project combines the libraries and structure to enable quick devel
 
 
 I created this project as a result of lack of detailed information regarding how to integrate Restful Yelp API to an Android app.
-Most things I found on internet are quite dated or not simple enough IMO. Therefore, I hope this will help whoever that will need this for iterate their own apps quickly.
-
-Hopefully, this would help you getting things up running quickly with a sample Android App.
+Most things I found on internet are quite dated or not simple enough IMO. Therefore, I hope this will help whoever that will need this for iterating their own apps quickly.
 
 
 ## The following things are supported out of the box:
  * Authenticating with any OAuth 1.0a for Yelp API version 2
- * Sending a Yelp search requests for AND parsing a raw response JSON data from Yelp API called into a strongly-typed data object.
+ * Sending a Yelp search requests for AND parsing a raw response JSON data from a Yelp API call into a strongly-typed data object.
  * Customizable filter request to Yelp API.
 
 
